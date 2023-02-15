@@ -1,0 +1,42 @@
+﻿@using ExamineApp.Models;
+@model List<Pupil>;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<body>
+    @{
+        <a class="btn btn-primary" href="Registration" role="button">Yeni şagird qeydiyyatı</a>
+        <table id="PupilTable" class="table table-striped" style="width:100%">
+            <tr>
+                <th>Id</th>
+                <th>Nömrəsi</th>
+                <th>Adı</th>
+                <th>Soyadı</th>
+                <th>Sinifi</th>
+            </tr>
+            @foreach (var pupil in Model)
+            {
+                <tr>
+                    <td>@pupil.Id</td>
+                    <td>@pupil.Number</td>
+                    <td>@pupil.Name</td>
+                    <td>@pupil.SurName</td>
+                    <td>@pupil.ClassNum</td>
+                </tr>
+            }
+        </table>
+    }
+
+</body>
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $('#PupilTable').DataTable();
+        });
+    </script>
+}
+

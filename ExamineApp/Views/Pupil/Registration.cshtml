@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Registration";
+    Layout = "_Layout";
+}
+
+<form action="Registration" method="post">
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="Number">Nömrəsi</label>
+            <input type="text" class="form-control" name="Number" value="" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="Name">Adı</label>
+            <input type="text" class="form-control" name="Name" value="" required>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="SurName">Soyadı</label>
+            <input type="text" class="form-control" name="SurName" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="ClassNum">Sinifi</label>
+            <input type="text" class="form-control" name="ClassNum" required>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Təsdiq et</button>
+</form>
+

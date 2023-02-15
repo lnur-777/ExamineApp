@@ -1,0 +1,42 @@
+﻿@using ExamineApp.Models;
+@model List<Examine>;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<body>
+    @{
+        <a class="btn btn-primary" href="Registration" role="button">Yeni imtahan qeydiyyatı</a>
+        <table id="ExamineTable" class="table table-striped" style="width:100%">
+            <tr>
+                <th>Id</th>
+                <th>Dərsin kodu</th>
+                <th>Şagirdin nömrəsi</th>
+                <th>İmtahan tarixi</th>
+                <th>Qiyməti</th>
+            </tr>
+            @foreach (var examine in Model)
+            {
+                <tr>
+                    <td>@examine.Id</td>
+                    <td>@examine.LessonCode</td>
+                    <td>@examine.PupilNumber</td>
+                    <td>@examine.Date</td>
+                    <td>@examine.Result</td>
+                </tr>
+            }
+        </table>
+    }
+
+</body>
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $('#ExamineTable').DataTable();
+        });
+    </script>
+}
+
