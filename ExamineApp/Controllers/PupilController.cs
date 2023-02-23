@@ -18,20 +18,14 @@ namespace ExamineApp.Controllers
 
         public IActionResult Registration()
         {
+            ViewBag.AllClasses = dbContext.Classs.ToList();
             return View();
         }
         [HttpPost]
         public IActionResult Registration(Pupil pupil)
         {
-            try
-            {
-                dbContext.Add(pupil);
-                dbContext.SaveChanges();
-            }
-            catch (Exception)
-            {
-                return View("Error");
-            }
+            dbContext.Add(pupil);
+            dbContext.SaveChanges();
             return View("Index", dbContext.Pupils.ToList());
         }
     }

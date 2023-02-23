@@ -1,27 +1,47 @@
-﻿@{
+﻿@using ExamineApp.Models;
+@{
     ViewData["Title"] = "Registration";
     Layout = "_Layout";
 }
+@{
+    var allClasses = (List<Class>)ViewBag.AllClasses;
+    if (allClasses.Count > 0)
+    {
+        <form action="Registration" method="post">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="Number">Nömrəsi</label>
+                    <input type="text" class="form-control" name="Number" value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Name">Adı</label>
+                    <input type="text" class="form-control" name="Name" value="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="SurName">Soyadı</label>
+                    <input type="text" class="form-control" name="SurName" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="ClassNum">Sinifi</label>
+                    <select class="form-select" name="ClassNum">
+                        @foreach (var cls in allClasses)
+                        {
 
-<form action="Registration" method="post">
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="Number">Nömrəsi</label>
-            <input type="text" class="form-control" name="Number" value="" required>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="Name">Adı</label>
-            <input type="text" class="form-control" name="Name" value="" required>
-        </div>
-        <div class="col-md-3 mb-3">
-            <label for="SurName">Soyadı</label>
-            <input type="text" class="form-control" name="SurName" required>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="ClassNum">Sinifi</label>
-            <input type="text" class="form-control" name="ClassNum" required>
-        </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Təsdiq et</button>
-</form>
+                            <option id="@cls.Id" value="@cls.ClassNum">@cls.ClassNum</option>
 
+                        }
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Təsdiq et</button>
+        </form>
+    }
+    else
+    {
+        <h1>
+            Qeydiyyatdan keçmiş dərs tapılmadı.
+            <br>
+            Zəhmət olmasa daha öncə dərslər bölməsinin qeydiyyatını aparın.
+        </h1>
+    }
+}

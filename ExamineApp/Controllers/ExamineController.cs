@@ -18,20 +18,15 @@ namespace ExamineApp.Controllers
 
         public IActionResult Registration()
         {
+            ViewBag.AllLessons = dbContext.Lessons.ToList();
+            ViewBag.AllPupils = dbContext.Pupils.ToList();
             return View();
         }
         [HttpPost]
         public IActionResult Registration(Examine examine)
         {
-            try
-            {
-                dbContext.Add(examine);
-                dbContext.SaveChanges();
-            }
-            catch (Exception)
-            {
-                return View("Error");
-            }
+            dbContext.Add(examine);
+            dbContext.SaveChanges();
             return View("Index", dbContext.Examines.ToList());
         }
     }

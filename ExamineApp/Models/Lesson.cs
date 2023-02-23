@@ -11,7 +11,7 @@ public partial class Lesson
 
     public string? Name { get; set; }
 
-    public decimal? ClassNum { get; set; }
+    public int ClassNum { get; set; }
 
     public string? TeacherName { get; set; }
 

@@ -18,6 +18,7 @@ public partial class ExamineDbContext : DbContext
     public virtual DbSet<Lesson> Lessons { get; set; }
 
     public virtual DbSet<Pupil> Pupils { get; set; }
+    public virtual DbSet<Class> Classs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -73,6 +74,14 @@ public partial class ExamineDbContext : DbContext
             entity.Property(e => e.SurName)
                 .HasMaxLength(30)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Class>(entity =>
+        {
+            entity.ToTable("Class");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.ClassNum).HasColumnName("ClassNum").HasColumnType("numeric(2, 0)");
         });
 
         OnModelCreatingPartial(modelBuilder);

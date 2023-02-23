@@ -23,15 +23,15 @@ namespace ExamineApp.Controllers
         [HttpPost]
         public IActionResult Registration(Lesson lesson)
         {
-            try
+            var classesInDb = dbContext.Classs.ToList();
+            var isClassExistInDb = classesInDb.Where(x => x.ClassNum == lesson.ClassNum).ToList().Count > 0;
+            if (!isClassExistInDb)
             {
-                dbContext.Add(lesson);
-                dbContext.SaveChanges();
+                Class cls = new() { ClassNum = lesson.ClassNum };
+                dbContext.Add(cls);
             }
-            catch (Exception)
-            {
-                return View("Error");
-            }
+            dbContext.Add(lesson);
+            dbContext.SaveChanges();
             return View("Index", dbContext.Lessons.ToList());
         }
     }
