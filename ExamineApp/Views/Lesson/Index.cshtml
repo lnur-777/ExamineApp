@@ -16,6 +16,8 @@
                 <th>Sinifi</th>
                 <th>Müəllimin adı</th>
                 <th>Müəllimin soyadı</th>
+                <th></th>
+                <th></th>
             </tr>
             @foreach (var lesson in Model)
             {
@@ -26,6 +28,14 @@
                     <td>@lesson.ClassNum</td>
                     <td>@lesson.TeacherName</td>
                     <td>@lesson.TeacherSurName</td>
+                    <td>
+                        <input value="Yenilə" type="button" class="btn btn-info" onclick="location.href='@Url.Action("Update", "Lesson", new {lesson.Id})'" />
+                    </td>
+                    <td>
+                        <a href="Delete/@lesson.Id" onclick="return confirm('Silmək istədiyinizə əmininizmi?');">
+                            <input type="button" class="btn btn-warning" value="Sil">
+                        </a>
+                    </td>
                 </tr>
             }
         </table>

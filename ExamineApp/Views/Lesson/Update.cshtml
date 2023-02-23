@@ -1,0 +1,32 @@
+﻿@model ExamineApp.Models.Lesson
+@{
+    ViewData["Title"] = "Update";
+    Layout = "_Layout";
+}
+
+<form action="Update" method="post">
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="Code">Dərsin kodu</label>
+            <input type="text" class="form-control" name="Code" value=@Model.Code required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="Name">Dərsin adı</label>
+            <input type="text" class="form-control" name="Name" value=@Model.Name required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="ClassNum">Sinifi</label>
+            <input type="text" class="form-control" name="ClassNum" value="@Model.ClassNum" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="TeacherName">Müəllimin adı</label>
+            <input type="text" class="form-control" name="TeacherName" value="@Model.TeacherName" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="TeacherSurName">Müəllimin soyadı</label>
+            <input type="text" class="form-control" name="TeacherSurName" value="@Model.TeacherSurName" required>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Təsdiq et</button>
+</form>
+

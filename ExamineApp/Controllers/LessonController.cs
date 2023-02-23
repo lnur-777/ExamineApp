@@ -34,5 +34,27 @@ namespace ExamineApp.Controllers
             dbContext.SaveChanges();
             return View("Index", dbContext.Lessons.ToList());
         }
+
+        public IActionResult Update(int id)
+        {
+            var lesson = dbContext.Lessons.FirstOrDefault(x => x.Id == id);
+            return View(lesson);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Lesson lesson)
+        {
+            dbContext.Update(lesson);
+            dbContext.SaveChanges();
+            return View("Index", dbContext.Lessons.ToList());
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var lesson = dbContext.Lessons.FirstOrDefault(x => x.Id == id);
+            dbContext.Remove(lesson);
+            dbContext.SaveChanges();
+            return View("Index", dbContext.Lessons.ToList());
+        }
     }
 }

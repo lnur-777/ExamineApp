@@ -28,5 +28,28 @@ namespace ExamineApp.Controllers
             dbContext.SaveChanges();
             return View("Index", dbContext.Pupils.ToList());
         }
+
+        public IActionResult Update(int id)
+        {
+            ViewBag.AllClasses = dbContext.Classs.ToList();
+            var pupil = dbContext.Pupils.FirstOrDefault(x => x.Id == id);
+            return View(pupil);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Pupil pupil)
+        {
+            dbContext.Update(pupil);
+            dbContext.SaveChanges();
+            return View("Index", dbContext.Pupils.ToList());
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var pupil = dbContext.Pupils.FirstOrDefault(x => x.Id == id);
+            dbContext.Remove(pupil);
+            dbContext.SaveChanges();
+            return View("Index", dbContext.Pupils.ToList());
+        }
     }
 }
