@@ -6,6 +6,7 @@
 
 <form action="Update" method="post">
     <div class="form-row">
+        <input type="hidden" name="Id" value="@Model.Id" />
         <div class="col-md-4 mb-3">
             <label for="Code">Dərsin kodu</label>
             <input type="text" class="form-control" name="Code" value=@Model.Code required>
