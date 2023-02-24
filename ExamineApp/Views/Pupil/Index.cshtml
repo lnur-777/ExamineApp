@@ -30,7 +30,7 @@
                         <input value="Yenilə" type="button" class="btn btn-info" onclick="location.href='@Url.Action("Update", "Pupil", new {pupil.Id})'" />
                     </td>
                     <td>
-                        <a href="Delete/@pupil.Id" onclick="return confirm('Silmək istədiyinizə əmininizmi?');">
+                        <a href="@Url.Action("Delete", "Pupil", new {pupil.Id})" onclick="return confirm('Silmək istədiyinizə əmininizmi?');">
                             <input type="button" class="btn btn-warning" value="Sil">
                         </a>
                     </td>

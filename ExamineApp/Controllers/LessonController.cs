@@ -32,7 +32,7 @@ namespace ExamineApp.Controllers
             }
             dbContext.Add(lesson);
             dbContext.SaveChanges();
-            return View("Index", dbContext.Lessons.ToList());
+            return RedirectToAction("Index");
         }
 
         public IActionResult Update(int id)
@@ -46,7 +46,7 @@ namespace ExamineApp.Controllers
         {
             dbContext.Update(lesson);
             dbContext.SaveChanges();
-            return View("Index", dbContext.Lessons.ToList());
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
@@ -54,7 +54,7 @@ namespace ExamineApp.Controllers
             var lesson = dbContext.Lessons.FirstOrDefault(x => x.Id == id);
             dbContext.Remove(lesson);
             dbContext.SaveChanges();
-            return View("Index", dbContext.Lessons.ToList());
+            return RedirectToAction("Index");
         }
     }
 }

@@ -26,7 +26,7 @@ namespace ExamineApp.Controllers
         {
             dbContext.Add(pupil);
             dbContext.SaveChanges();
-            return View("Index", dbContext.Pupils.ToList());
+            return RedirectToAction("Index");
         }
 
         public IActionResult Update(int id)
@@ -41,7 +41,7 @@ namespace ExamineApp.Controllers
         {
             dbContext.Update(pupil);
             dbContext.SaveChanges();
-            return View("Index", dbContext.Pupils.ToList());
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
@@ -49,7 +49,7 @@ namespace ExamineApp.Controllers
             var pupil = dbContext.Pupils.FirstOrDefault(x => x.Id == id);
             dbContext.Remove(pupil);
             dbContext.SaveChanges();
-            return View("Index", dbContext.Pupils.ToList());
+            return RedirectToAction("Index");
         }
     }
 }

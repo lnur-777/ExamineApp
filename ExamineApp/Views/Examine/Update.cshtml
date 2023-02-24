@@ -1,0 +1,57 @@
+﻿@using ExamineApp.Models;
+@model Examine;
+@{
+    ViewData["Title"] = "Update";
+    Layout = "_Layout";
+}
+
+@{
+    var allPupils = (List<Pupil>)ViewBag.AllPupils;
+    var allLessons = (List<Lesson>)ViewBag.AllLessons;
+    <form action="Registration" method="post">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="LessonCode">Dərsin kodu</label>
+                <select class="form-select" name="LessonCode">
+                    @foreach (var lsns in allLessons)
+                    {
+                        if (lsns.Code == Model.LessonCode)
+                        {
+                            <option selected id="@lsns.Id" value="@lsns.Code">@lsns.Code</option>
+                        }
+                        else
+                        {
+                            <option id="@lsns.Id" value="@lsns.Code">@lsns.Code</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="PupilNumber">Şagirdin nömrəsi</label>
+                <select class="form-select" name="PupilNumber">
+                    @foreach (var ppls in allPupils)
+                    {
+                        if (ppls.Number == Model.PupilNumber)
+                        {
+                            <option selected id="@ppls.Id" value="@ppls.Number">@ppls.Number</option>
+                        }
+                        else
+                        {
+                            <option id="@ppls.Id" value="@ppls.Number">@ppls.Number</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="Date">İmtahan tarixi</label>
+                <input type="date" class="form-control" name="Date" value="@Model.Date.Value.ToString("yyyy-MM-dd")" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="Result">Qiyməti</label>
+                <input type="text" class="form-control" name="Result" value="@Model.Result" required>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Təsdiq et</button>
+    </form>
+}
+

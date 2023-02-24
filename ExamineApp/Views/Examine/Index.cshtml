@@ -15,6 +15,8 @@
                 <th>Şagirdin nömrəsi</th>
                 <th>İmtahan tarixi</th>
                 <th>Qiyməti</th>
+                <th></th>
+                <th></th>
             </tr>
             @foreach (var examine in Model)
             {
@@ -24,6 +26,14 @@
                     <td>@examine.PupilNumber</td>
                     <td>@examine.Date</td>
                     <td>@examine.Result</td>
+                    <td>
+                        <input value="Yenilə" type="button" class="btn btn-info" onclick="location.href='@Url.Action("Update", "Examine", new {examine.Id})'" />
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Delete", "Examine", new {examine.Id})" onclick="return confirm('Silmək istədiyinizə əmininizmi?');">
+                            <input type="button" class="btn btn-warning" value="Sil">
+                        </a>
+                    </td>
                 </tr>
             }
         </table>
